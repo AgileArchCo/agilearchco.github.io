@@ -1,0 +1,80 @@
+<!--This is a test doc for image map functionality -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map Test</title>
+    <link rel="stylesheet" href="index_style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        /* Highlight overlay */
+        .highlight {
+            position: absolute;
+            border: 2px solid green;
+            pointer-events: none; /* Ensure it doesn't block mouse interaction */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Map Test</h1>
+    <h2>This is a test of the map outline functionality</h2>
+
+    <div style="position: relative; display: inline-block;">
+        <img src="testmap.jpg" usemap="#image-map" alt="Test Map" id="map-image">
+        <map name="image-map">
+            <area target="" alt="Area 1" title="Area 1" href="#" coords="47,26,116,26,116,96,43,100" shape="poly"></area>
+            <area target="" alt="Area 2" title="Area 2" href="#" coords="201,24,279,23,279,96,203,94" shape="poly"></area>
+            <area target="" alt="Area 3" title="Area 3" href="#" coords="47,137,117,135,117,205,44,208" shape="poly"></area>
+            <area target="" alt="Area 4" title="Area 4" href="#" coords="204,133,284,138,280,212,205,208" shape="poly"></area>
+        </map>
+        <!-- Dynamic Highlight -->
+        <div class="highlight" id="highlight"></div>
+    </div>
+
+    <script>
+        const image = document.getElementById("map-image");
+        const highlight = document.getElementById("highlight");
+        const areas = document.querySelectorAll("area");
+
+        areas.forEach((area) => {
+            area.addEventListener("mouseover", (e) => {
+                const coords = area.coords.split(",").map(Number);
+                const shape = area.shape;
+
+                if (shape === "poly") {
+                    const xMin = Math.min(...coords.filter((_, i) => i % 2 === 0));
+                    const xMax = Math.max(...coords.filter((_, i) => i % 2 === 0));
+                    const yMin = Math.min(...coords.filter((_, i) => i % 2 !== 0));
+                    const yMax = Math.max(...coords.filter((_, i) => i % 2 !== 0));
+
+                    // Position the highlight box
+                    highlight.style.left = `${xMin}px`;
+                    highlight.style.top = `${yMin}px`;
+                    highlight.style.width = `${xMax - xMin}px`;
+                    highlight.style.height = `${yMax - yMin}px`;
+                    highlight.style.display = "block";
+                }
+            });
+
+            area.addEventListener("mouseout", () => {
+                highlight.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>
