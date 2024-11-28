@@ -1,0 +1,238 @@
+:root {
+    --White: #F3F3F3;
+    --Green: #255234;
+    --Blue: #5272A5;
+    --Orange: #C16048;
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    --overflow: hidden;
+    text-overflow: ellipsis;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../resources/landing.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: clamp(14vh, 14vw, 14vh);
+    min-height: fit-content;
+    width: 100%;
+    background-color: rgba(37, 82, 52, 90%);
+    border-bottom: solid var(--White) 3px;
+}
+
+.logo {
+    margin: 1vw;
+    height: clamp(84px, 8vw, 8vh);
+    width: clamp(84px, 20vw, 20vh);
+    background-image: url("../resources/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: visible;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 75%;
+    gap: 2vw;
+    overflow: visible;
+}
+
+nav > button {
+    flex: 1;
+    color: var(--White);
+    background: none;
+    font-size: larger;
+    font-weight: bolder;
+    border: 0;
+    cursor: pointer;
+    overflow: visible;
+    transition: scale 0.1s ease-out;
+}
+
+nav > button:hover {
+    scale: 1.2;
+}
+
+nav > button:active {
+    scale: 1;
+}
+
+nav :first-child {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.access {
+    margin: 1vw;
+    margin-left: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: fit-content;
+    gap: 1vw;
+    overflow: visible;
+}
+
+.access > button {
+    color: var(--White);
+    height: clamp(4vh, 4vw, 4vh);
+    width: clamp(10vh, 10vw, 10vh);
+    min-height: 20px;
+    min-width: 70px;
+    border: solid 1px;
+    border-radius: 10px;
+    overflow: visible;
+    transition: scale 0.1s ease-out, background 0.1s ease-out;
+}
+
+#sign-in {
+    border-color: gray;
+    background-color: var(--Orange);
+}
+
+#sign-in:hover {
+    scale: 1.1;
+}
+
+#sign-in:active {
+    color: var(--Orange);
+    background-color: var(--White);
+    scale: 1;
+}
+
+#register {
+    border-color: black;
+    background-color: var(--Blue);
+}
+
+#register:hover {
+    scale: 1.1;
+}
+
+#register:active {
+    color: var(--Blue);
+    background-color: var(--White);
+    scale: 1;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    padding: 1vh;
+    text-align: center;
+    width: fit-content;
+    font-size: clamp(35px, 5.2vw, 5.2vh);
+    color: var(--White);
+    background-color: var(--Green);
+    text-shadow: rgb(38, 38, 38) 0px 2px 5px;
+}
+
+h2 {
+    padding: 1.5vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    text-align: center;
+    width: fit-content;
+    font-size: clamp(24px, 4vw, 4vh);
+    color: var(--White);
+    background-color: var(--Orange);
+    text-shadow: rgb(38, 38, 38) 0px 2px 5px;
+}
+
+h3 {
+    padding: 1.5vh;
+    padding-top: 0.8vh;
+    padding-bottom: 0.8vh;
+    text-align: center;
+    width: fit-content;
+    font-size: clamp(24px, 3.5vw, 3.5vh);
+    color: var(--White);
+    background-color: var(--Blue);
+    text-shadow: rgb(38, 38, 38) 0px 2px 5px;
+}
+
+#book {
+    margin: 24px;
+    padding: 10px;
+    padding-top: 0.8vh;
+    padding-bottom: 0.8vh;
+    font-size: clamp(14px, 2vw, 2vh);
+    color: var(--White);
+    background-color: var(--Orange);
+    border: solid gray 1px;
+    cursor: pointer;
+    transition: scale 0.1s ease-out, background 0.1s ease-out;
+}
+
+#book:hover {
+    scale: 1.1;
+}
+
+#book:active {
+    color: var(--Orange);
+    background-color: var(--White);
+    scale: 1;
+}
+
+
+@media only screen and (max-width: 600px),
+(pointer:none),
+(pointer:coarse) {
+    nav {
+        margin-right: 2vw;
+        flex-direction: column;
+        align-items: flex-end !important;
+    }
+}
+
+@media only screen and (max-width: 450px),
+(pointer:none),
+(pointer:coarse) {
+    .access {
+        margin: 2vw;
+        flex-direction: column;
+        gap: 1vh;
+    }
+}
