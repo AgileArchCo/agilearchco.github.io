@@ -1,0 +1,500 @@
+:root {
+    --White: #F3F3F3;
+    --Green: #255234;
+    --Blue: #5272A5;
+    --Orange: #C16048;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--White);
+    overflow: auto;
+}
+
+body {
+    overflow: auto;
+}
+
+body > * {
+    overflow: visible;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: clamp(14vh, 14vw, 14vh);
+    min-height: clamp(14vh, 14vw, 14vh);
+    width: 100%;
+    background-color: var(--Green);
+    border-bottom: solid var(--White) 3px;
+}
+
+.logo {
+    margin: 1vw;
+    height: clamp(84px, 8vw, 8vh);
+    width: clamp(84px, 20vw, 20vh);
+    background-image: url("../resources/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: visible;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 75%;
+    gap: 2vw;
+    overflow: visible;
+}
+
+nav > button {
+    flex: 1;
+    color: var(--White);
+    background: none;
+    font-size: larger;
+    font-weight: bolder;
+    border: 0;
+    cursor: pointer;
+    overflow: visible;
+    transition: scale 0.1s ease-out;
+}
+
+nav > button:hover {
+    scale: 1.2;
+}
+
+nav > button:active {
+    scale: 1;
+}
+
+nav :nth-child(2) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.access {
+    margin: 1vw;
+    margin-left: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: fit-content;
+    gap: 1vw;
+    overflow: visible;
+}
+
+.access > button {
+    color: var(--White);
+    height: clamp(4vh, 4vw, 4vh);
+    width: clamp(10vh, 10vw, 10vh);
+    min-height: 20px;
+    min-width: 70px;
+    border: solid 1px;
+    border-radius: 10px;
+    overflow: visible;
+    transition: scale 0.1s ease-out, background 0.1s ease-out;
+}
+
+#sign-in {
+    border-color: gray;
+    background-color: var(--Orange);
+}
+
+#sign-in:hover {
+    scale: 1.1;
+}
+
+#sign-in:active {
+    color: var(--Orange);
+    background-color: var(--White);
+    scale: 1;
+}
+
+#register {
+    border-color: black;
+    background-color: var(--Blue);
+}
+
+#register:hover {
+    scale: 1.1;
+}
+
+#register:active {
+    color: var(--Blue);
+    background-color: var(--White);
+    scale: 1;
+}
+
+main {
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    height: clamp(65vh, 65vw, 65vh);
+    min-height: clamp(65vh, 65vw, 65vh);
+    width: 100%;
+}
+
+section > div > p {
+    margin: 12px;
+    color: var(--Green);
+    text-decoration: underline;
+}
+
+.location {
+    padding-left: 5%;
+    padding-right: 5%;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.location > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.location-holder > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    --background-color: red;
+}
+
+.locations {
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    height: clamp(30vh, 30vw, 40vh);
+    width: clamp(25vh, 25vw, 45vh);
+    gap: 4px;
+}
+
+.locations > button {
+    padding-left: 1vw;
+    flex: 1;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    box-shadow: black 0px 1px 1px;
+    overflow: visible;
+}
+
+input[type="radio"] {
+    accent-color: var(--Orange);
+
+} 
+
+.locations > button > input {
+    user-select: none;
+    
+}
+
+.locations > button > img {
+    height: clamp(3vh, 3vw, 3vh);
+    width: clamp(3vh, 3vw, 3vh);
+}
+
+#map {
+    height: clamp(30vh, 30vw, 40vh);
+    width: clamp(25vw, 80%, 25vh);
+    background-image: url("../resources/TrentMap.jpg");
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.section-title {
+    padding: 8px;
+    align-self: flex-start;
+    font-size: clamp(2vh, 2vw, 2vh);
+    color: var(--White);
+    background-color: var(--Blue);
+}
+
+.spots {
+    height: clamp(25vh, 65vw, 65vh);
+    min-height: clamp(50vh, 50vw, 50vh);
+    width: 100%;
+    background-color: var(--Green);
+}
+
+.spots {
+    display: flex;
+    flex-direction: row;
+}
+
+.spots > div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.lots {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    gap: 4px;
+}
+
+.lots > p {
+    margin: 24px;
+    margin-top: 40px;
+    color: var(--White);
+}
+
+.lots > button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: clamp(6vh, 6vw, 6vh);
+    width: clamp(40vh, 40vw, 40vh);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.lots > button > p {
+    flex: 1;
+    font-size: clamp(5vh, 5vw, 5vh);
+}
+
+.lots > button > div {
+    flex: 2;
+    display: grid;
+    grid-template-areas: "a a";
+    text-align: start;
+}
+
+.lots > button > div >:nth-child(1) {
+    font-weight: bolder;
+}
+
+.lots > button > div >:nth-child(2) {
+    font-weight: bolder;
+}
+
+.lots > button > div >:nth-child(3) {
+    font-weight: lighter;
+}
+
+.lots > button > div >:nth-child(4) {
+    font-weight: lighter;
+}
+
+.settings {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    gap: 4px;
+}
+
+.settings > p {
+    margin: 24px;
+    margin-top: 40px;
+    color: var(--White);
+}
+
+.fields {
+    display: grid;
+    grid-template-areas: "a a";
+    gap: 1vw;
+}
+
+.fields > div {
+    flex: 1;
+    width: 100%;
+}
+
+.fields > div > select, .fields > div > input, .fields > div > button {
+    height: clamp(4vh, 4vw, 4vh);
+    width: clamp(20vh, 20vw, 24vh);
+    text-indent: 4px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.license {
+    text-transform: uppercase;
+    cursor: inherit !important;
+}
+
+.fields > div > button {
+    padding: 10px;
+    padding-top: 0.8vh;
+    padding-bottom: 0.8vh;
+    text-align: center;
+    font-size: 60%;
+    text-wrap: nowrap;
+    color: var(--White);
+    background-color: var(--Orange);
+    border-radius: 0;
+    border: solid gray 1px;
+    cursor: pointer;
+    transition: scale 0.1s ease-out, background 0.1s ease-out;
+    text-indent: 0px;
+}
+
+.fields > div > p {
+    color: var(--White);
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    height: clamp(25vh, 25vw, 25vh);
+    min-height: clamp(25vh, 25vw, 25vh);
+    width: 100%;
+    border-top: solid black 1px;
+}
+
+@media only screen and (max-width: 600px),
+(pointer:none),
+(pointer:coarse) {
+    nav {
+        margin-right: 2vw;
+        flex-direction: column;
+        align-items: flex-end !important;
+    }
+
+    section {
+        min-height: clamp(75vh, 65vw, 65vh);
+    }
+
+    .location {
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .location > * {
+        flex: 1;
+    }
+
+    section > div {
+        min-width: 80vw;
+    }
+
+    .locations {
+        padding-left: 4px;
+        padding-right: 4px;
+        box-sizing: border-box;
+        min-width: 80vw;
+    }
+
+    .location-holder {
+        min-width: 80vw;
+    }
+
+    .section-title {
+        margin-top: 12px;
+    }
+
+    .spots {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        min-height: clamp(90vh, 90vw, 90vh);
+    }
+
+    .fields > div > select, .fields > div > input, .fields > div > button {
+        height: clamp(4vh, 4vw, 4vh);
+        width: clamp(24vh, 24vw, 24vh);
+        text-indent: 4px;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    .fields > div > button {
+        border-radius: 0;
+        text-indent: 0px;
+    }
+}
+
+@media only screen and (max-width: 500px),
+(pointer:none),
+(pointer:coarse) {
+    .spots{
+        min-height: clamp(95vh, 65vw, 65vh);
+    }
+
+    .lots > button {
+        width: 100%;
+    }
+
+    .lots > button > div > p {
+        font-size: 70%;
+    }
+
+    .settings > p {
+        margin: 0;
+    }
+
+    .fields {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fields > * {
+        flex: 1;
+    }
+}
+
+@media only screen and (max-width: 450px),
+(pointer:none),
+(pointer:coarse) {
+    .access {
+        margin: 2vw;
+        flex-direction: column;
+        gap: 1vh;
+    }
+}

@@ -1,13 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Landing Page</title>
-    </head>
-    <body>
-        <header>
-            
-        </header>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="./styles/booking.css" rel="stylesheet">
+    <script src="./js/booking.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <div class="buttons">
+            <nav>
+                <button id="home">Home</button>
+                <button id="bookings">Bookings</button>
+                <button id="guidelines">Guidelines</button>
+            </nav>
+            <div class="access">
+                <button id="sign-in">Sign In</button>
+                <button id="register">Register</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="location">
+            <div class="location-holder">
+                <p>Peterborough Campus</p>
+                <div>
+                    <div id="map"></div>
+                    <p class="section-title">Book Your Parking Spot</p>
+                </div>
+            </div>
+            <div>
+                <p>Choose your location</p>
+                <div class="locations">
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img
+                            src="./resources/Chanplain_College.png">Champlain College</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img
+                            src="./resources/lady_eaton_college.png">Lady Eaton College</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img
+                            src="./resources/Otonabee_College.png">Otonobee College</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img src="./resources/gzowski_college.png">Peter
+                        Gzowski College</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img
+                            src="./resources/office_Worked.png">Blackburn</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img src="./resources/book.png">Bata
+                        Library</button>
+                    <button class="college"><input class="radio" type="radio" onclick="return false;"><img src="./resources/coffee.png">Student
+                        Center</button>
+                </div>
+            </div>
+        </section>
+        <section class="spots">
+            <div class="lots">
+                <p>Recommended Lot's</p>
+                <button>
+                    <p>R</p>
+                    <div>
+                        <p>Distance</p>
+                        <p>Availability</p>
+                        <p>33 meters</p>
+                        <p>24 spots</p>
+                    </div>
+                </button>
+                <button>
+                    <p>Y</p>
+                    <div>
+                        <p>Distance</p>
+                        <p>Availability</p>
+                        <p>33 meters</p>
+                        <p>24 spots</p>
+                    </div>
+                </button>
+                <button>
+                    <p>S</p>
+                    <div>
+                        <p>Distance</p>
+                        <p>Availability</p>
+                        <p>33 meters</p>
+                        <p>24 spots</p>
+                    </div>
+                </button>
+                <button>
+                    <p>T</p>
+                    <div>
+                        <p>Distance</p>
+                        <p>Availability</p>
+                        <p>33 meters</p>
+                        <p>24 spots</p>
+                    </div>
+                </button>
+                <button>
+                    <p>U</p>
+                    <div>
+                        <p>Distance</p>
+                        <p>Availability</p>
+                        <p>33 meters</p>
+                        <p>24 spots</p>
+                    </div>
+                </button>
+            </div>
+            <div class="settings">
+                <p>Settings</p>
+                <div class="fields">
+                    <div>
+                        <p>Lot ID</p>
+                        <select>
+                            <option>Lot R</option>
+                            <option>Lot Y</option>
+                            <option>Lot S</option>
+                            <option>Lot T</option>
+                            <option>Lot U</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Date</p>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <p>Start Time</p>
+                        <input type="time">
+                    </div>
+                    <div>
+                        <p>End Time</p>
+                        <input type="time">
+                    </div>
+                    <div>
+                        <p>License Plate</p>
+                        <input class="license" type="text" placeholder="ABC-123">
+                    </div>
+                    <div>
+                        <br>
+                        <button>Complete your booking →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="logo"></div>
+    </footer>
+</body>
+
 </html>
