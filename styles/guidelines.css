@@ -46,8 +46,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: clamp(14vh, 14vw, 14vh);
-    min-height: clamp(14vh, 14vw, 14vh);
+    height: fit-content;
+    min-height: fit-content;
     width: 100%;
     background-color: var(--Green);
     border-bottom: solid var(--White) 3px;
@@ -146,7 +146,7 @@ nav :nth-child(3) {
 }
 
 #register {
-    border-color: black;
+    border: none;
     background-color: var(--Blue);
 }
 
@@ -205,4 +205,24 @@ li {
 
 a {
     margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 600px),
+(pointer:none),
+(pointer:coarse) {
+    nav {
+        margin-right: 2vw;
+        flex-direction: column;
+        align-items: flex-end !important;
+    }
+}
+
+@media only screen and (max-width: 450px),
+(pointer:none),
+(pointer:coarse) {
+    .access {
+        margin: 2vw;
+        flex-direction: column;
+        gap: 1vh;
+    }
 }

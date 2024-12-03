@@ -37,8 +37,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: clamp(14vh, 14vw, 14vh);
-    min-height: clamp(14vh, 14vw, 14vh);
+    height: fit-content;
+    min-height: fit-content;
     width: 100%;
     background-color: rgba(37, 82, 52, 90%);
     border-bottom: solid var(--White) 3px;
@@ -137,7 +137,7 @@ nav :first-child {
 }
 
 #register {
-    border-color: black;
+    border: none;
     background-color: var(--Blue);
 }
 
