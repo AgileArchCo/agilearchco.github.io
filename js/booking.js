@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     var RADIOS = document.getElementsByClassName("radio")
 
     HOME_BUTTON.addEventListener("click", () => {
-        location.href = "./index.html";
+        location.href = "./index";
     })
 
     GUIDELINES_BUTTON.addEventListener("click", () => {
-        location.href = "./guidelines.html";
+        location.href = "./guidelines";
     })
 
     for (let index = 0; index < COLLEGE_BUTTONS.length; index++) {
