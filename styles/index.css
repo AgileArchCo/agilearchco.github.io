@@ -15,6 +15,9 @@
     --overflow: hidden;
     text-overflow: ellipsis;
     scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
 }
 
 html,
@@ -72,7 +75,7 @@ nav {
     overflow: visible;
 }
 
-nav > button {
+nav>button {
     flex: 1;
     color: var(--White);
     background: none;
@@ -84,11 +87,11 @@ nav > button {
     transition: scale 0.1s ease-out;
 }
 
-nav > button:hover {
+nav>button:hover {
     scale: 1.2;
 }
 
-nav > button:active {
+nav>button:active {
     scale: 1;
 }
 
@@ -109,7 +112,7 @@ nav :first-child {
     overflow: visible;
 }
 
-.access > button {
+.access>button {
     color: var(--White);
     height: clamp(4vh, 4vw, 4vh);
     width: clamp(10vh, 10vw, 10vh);

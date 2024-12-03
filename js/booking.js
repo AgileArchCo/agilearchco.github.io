@@ -3,13 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
     var GUIDELINES_BUTTON = document.getElementById("guidelines")
     var COLLEGE_BUTTONS = document.getElementsByClassName("college")
     var RADIOS = document.getElementsByClassName("radio")
+    var distances = document.getElementsByClassName("distance")
+    var lots = document.getElementsByClassName("avaible-spots")
 
     HOME_BUTTON.addEventListener("click", () => {
-        location.href = "./index";
+        location.href = "./index.html";
     })
 
     GUIDELINES_BUTTON.addEventListener("click", () => {
-        location.href = "./guidelines";
+        location.href = "./guidelines.html";
     })
 
     for (let index = 0; index < COLLEGE_BUTTONS.length; index++) {
@@ -27,5 +29,28 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(radio.classList.contains("checked"))
             radio.checked = radio.classList.contains("checked");
         })
+    }
+
+    var randomized_distance = [
+        Math.floor(Math.random() * 80) + 1,
+        Math.floor(Math.random() * 80) + 1,
+        Math.floor(Math.random() * 80) + 1,
+        Math.floor(Math.random() * 80) + 1,
+        Math.floor(Math.random() * 80) + 1]
+
+    randomized_distance = randomized_distance.sort()
+
+    var randomized_lots = [
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1]
+
+    randomized_lots = randomized_lots.sort()
+
+    for (let index = 0; index < distances.length; index++) {
+        distances[index].innerHTML = `${randomized_distance[index]} meters`
+        lots[index].innerHTML = `${randomized_lots[index]} spots`
     }
 })
