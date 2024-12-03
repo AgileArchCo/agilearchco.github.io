@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     var BOOK_BUTTON = document.getElementById("book")
     
     BOOKINGS_BUTTON.addEventListener("click", () => {
-        location.href = "./booking.html";
+        location.href = "./booking";
     })
 
     GUIDELINES_BUTTON.addEventListener("click", () => {
-        location.href = "./guidelines.html";
+        location.href = "./guidelines";
     })
 
     BOOK_BUTTON.addEventListener("click", () => {
-        location.href = "./booking.html";
+        location.href = "./booking";
     })
 })
