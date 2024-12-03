@@ -41,11 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     randomized_distance = randomized_distance.sort()
 
     var randomized_lots = [
-        Math.floor(Math.random() * 25) + 1,
-        Math.floor(Math.random() * 25) + 1,
-        Math.floor(Math.random() * 25) + 1,
-        Math.floor(Math.random() * 25) + 1,
-        Math.floor(Math.random() * 25) + 1]
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1,
+        Math.floor(Math.random() * 24) + 1]
 
     randomized_lots = randomized_lots.sort()
 
