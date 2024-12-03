@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     var BOOKINGS_BUTTON = document.getElementById("bookings")
 
     HOME_BUTTON.addEventListener("click", () => {
-        location.href = "./index.html";
+        location.href = "./index";
     })
 
     BOOKINGS_BUTTON.addEventListener("click", () => {
-        location.href = "./booking.html";
+        location.href = "./booking";
     })
 })
