@@ -1,11 +1,9 @@
-<!--This is a test doc for image map functionality -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Map Test</title>
-    <link rel="stylesheet" href="index_style.css">
+    <title>ParkTrent Interactive Map</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,77 +19,507 @@
             max-width: 100%;
         }
 
-        /* Highlight overlay */
-        .highlight {
+        /* SVG overlay */
+        #svg-overlay {
             position: absolute;
-            border: 2px solid green;
-            pointer-events: none; /* Ensure it doesn't block mouse interaction */
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Ensure it doesn't block interaction */
+            z-index: 10;
+        }
+
+        /* Styling for available spaces */
+        .highlight-path {
+            fill: rgba(0, 255, 0, 0.5); /* Solid green fill with transparency */
+            stroke: green;
+            stroke-width: 1;
+        }
+
+        /* Styling for no available spaces - Soft Red */
+        .highlight-path-unavailable {
+            fill: rgba(255, 99, 71, 0.5); /* Soft red fill with transparency */
+            stroke: #cc0000; /* Darker red stroke */
+            stroke-width: 1;
+        }
+
+        .map-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            position: fixed; /* Use fixed for precise positioning relative to the viewport */
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        /* Form Modal Styling */
+        .form-modal {
             display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 8px;
+        }
+
+        .form-modal.show {
+            display: block;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        .form-modal button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .form-modal button:hover {
+            background: #0056b3;
+        }
+
+        .form-modal label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .form-modal input[type="text"],
+        .form-modal input[type="date"],
+        .form-modal input[type="time"],
+        .form-modal select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-modal .duration-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-modal .duration-container select {
+            width: 48%;
+        }
+
+        .form-modal .price-display {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Receipt Modal Styling */
+        .receipt-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .receipt-modal.show {
+            display: block;
+        }
+
+        .receipt-modal button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .receipt-modal button:hover {
+            background: #218838;
+        }
+
+        .receipt-modal h3 {
+            margin-top: 0;
+        }
+
+        /* Disable select styles when disabled */
+        select:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <h1>Image Map Test</h1>
-    <h2>This is a test of the map outline functionality</h2>
+    <h1>Interactive Map</h1>
+   
 
-    <div style="position: relative; display: inline-block;" alt="Test Map" id="map-image">
-		<!-- Image Map Generated by http://www.image-map.net/ -->
-		<img src="TrentMap.jpg" usemap="#image-map">
-
-		<map name="image-map">
-			<area target="" alt="lot-u" title="lot-u" href="#" coords="618,338,605,355,602,384,604,413,612,446,616,451,636,448,621,398,628,340,623,339" shape="poly"></area>
-			<area target="" alt="lot-x" title="lot-x" href="#" coords="507,372,541,366,555,375,556,390,513,400,510,387" shape="poly"></area>
-			<area target="" alt="lot-q" title="lot-q" href="#" coords="567,90,625,101,632,48,573,41" shape="poly"></area>
-			<area target="" alt="lot-r" title="lot-r" href="#" coords="577,120,611,122,607,175,572,171" shape="poly"></area>
-			<area target="" alt="lot-d" title="lot-d" href="#" coords="372,93,400,105,422,42,414,41,418,33,400,30,388,47,380,70" shape="poly"></area>
-			<area target="" alt="lot-g" title="lot-g" href="#" coords="224,269,284,237,283,231,275,231,268,216,216,241,215,249" shape="poly"></area>
-			<area target="" alt="lot-i" title="lot-i" href="#" coords="351,292,357,289,352,284,362,276,370,281,373,279,386,295,364,311" shape="poly"></area>
-			<area target="" alt="lot-f" title="lot-f" href="#" coords="167,510,236,489,243,512,173,534" shape="poly"></area>
-			<area target="" alt="lot-y" title="lot-y" href="#" coords="476,661,474,652,477,643,483,641,489,639,506,636,510,656" shape="poly"></area>
-			<area target="" alt="lot-w" title="lot-w" href="#" coords="626,552,656,560,654,582,623,573" shape="poly"></area>
-		</map>
-			
-        <!--
-		<img src="testmap.jpg" usemap="#image-map" alt="Test Map" id="map-image">
+    <div class="map-container">
+        <img src="trentmap2.jpg" usemap="#image-map" alt="Test Map" id="map-image">
+        <svg id="svg-overlay"></svg>
+        <div class="tooltip" id="tooltip"></div>
         <map name="image-map">
-            <area target="" alt="Area 1" title="Area 1" href="#" coords="47,26,116,26,116,96,43,100" shape="poly"></area>
-            <area target="" alt="Area 2" title="Area 2" href="#" coords="201,24,279,23,279,96,203,94" shape="poly"></area>
-            <area target="" alt="Area 3" title="Area 3" href="#" coords="47,137,117,135,117,205,44,208" shape="poly"></area>
-            <area target="" alt="Area 4" title="Area 4" href="#" coords="204,133,284,138,280,212,205,208" shape="poly"></area>
+            <area target="" alt="Gzowski Way-1" title="Gzowski Way-1" href="#" coords="618,338,605,355,602,384,604,413,612,446,616,451,636,448,621,398,628,340,623,339" shape="poly"></area>
+            <area target="" alt="Gzowski Way-2" title="Gzowski Way-2" href="#" coords="507,372,541,366,555,375,556,390,513,400,510,387" shape="poly"></area>
+            <area target="" alt="East Bank Dr." title="East Bank Dr." href="#" coords="567,90,625,101,632,48,573,41" shape="poly"></area>
+            <area target="" alt="Otonabee College" title="Otonabee College" href="#" coords="577,120,611,122,607,175,572,171" shape="poly"></area>
+            <area target="" alt="Alumni House" title="Alumni House" href="#" coords="372,93,400,105,422,42,414,41,418,33,400,30,388,47,380,70" shape="poly"></area>
+            <area target="" alt="Lady Eaton College" title="Lady Eaton College" href="#" coords="224,269,284,237,283,231,275,231,268,216,216,241,215,249" shape="poly"></area>
+            <area target="" alt="Student Centre" title="Student Centre" href="#" coords="351,292,357,289,352,284,362,276,370,281,373,279,386,295,364,311" shape="poly"></area>
+            <area target="" alt="Justin Chiu Stadium" title="Justin Chiu Stadium" href="#" coords="167,510,236,489,243,512,173,534" shape="poly"></area>
+            <area target="" alt="Pioneer Road" title="Pioneer Road" href="#" coords="476,661,474,652,477,643,483,641,489,639,506,636,510,656" shape="poly"></area>
+            <area target="" alt="Mackenzie House" title="Mackenzie House" href="#" coords="626,552,656,560,654,582,623,573" shape="poly"></area>
+            <area target="" alt="Blackburn Hall" title="Blackburn Hall" href="#" coords="86,574,111,567,120,558,121,546,115,546,112,541,86,548,89,564" shape="poly"></area>
         </map>
-        <!-- Dynamic Highlight -->
-        <div class="highlight" id="highlight"></div>
+    </div>
+
+    <!-- Form Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="form-modal" id="form-modal">
+        <h3>Book Spot</h3>
+        <p><strong>Username:</strong> John Doe</p>
+        <label for="vehicle-select">Select Vehicle:</label>
+        <select id="vehicle-select">
+            <option value="ABC-123">ABC-123</option>
+            <option value="XYZ-789">XYZ-789</option>
+        </select>
+
+        <label for="booking-date">Select Date:</label>
+        <input type="date" id="booking-date" required>
+
+        <label for="booking-time">Select Time:</label>
+        <input type="time" id="booking-time" required>
+
+        <label>Duration:</label>
+        <div class="duration-container">
+            <select id="duration-hours">
+                <option value="1">1 hour</option>
+                <option value="2">2 hours</option>
+                <option value="3">3 hours</option>
+                <option value="4">4 hours</option>
+                <option value="5">5 hours</option>
+                <option value="6">6 hours</option>
+                <option value="7">7 hours</option>
+                <option value="8">8 hours</option>
+                <option value="9">9 hours</option> <!-- Added 9 hours option -->
+            </select>
+            <select id="duration-minutes">
+                <option value="15">15 mins</option>
+                <option value="30">30 mins</option>
+                <option value="45">45 mins</option>
+            </select>
+        </div>
+
+        <label>
+            <input type="checkbox" id="full-day-checkbox"> Full Day Parking
+        </label>
+
+        <div class="price-display" id="price-display">Price: $0.00</div>
+
+        <label for="payment-select">Payment Information:</label>
+        <select id="payment-select">
+            <option value="XXXX-XXXX-XXXX-1234">XXXX-XXXX-XXXX-1234</option>
+            <!-- Add more payment options if needed -->
+        </select>
+
+        <button id="submit-button">Submit</button>
+        <button id="close-form">Close</button>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="receipt-modal" id="receipt-modal">
+        <h3>Booking Confirmed!</h3>
+        <p id="receipt-content"></p>
+        <p>Receipt sent to johndoe@trentu.ca</p>
+        <button id="close-receipt">Close</button>
     </div>
 
     <script>
         const image = document.getElementById("map-image");
-        const highlight = document.getElementById("highlight");
+        const svgOverlay = document.getElementById("svg-overlay");
         const areas = document.querySelectorAll("area");
+        const tooltip = document.getElementById("tooltip");
+        const formModal = document.getElementById("form-modal");
+        const overlay = document.getElementById("overlay");
+        const closeForm = document.getElementById("close-form");
+        const submitButton = document.getElementById("submit-button");
+        const receiptModal = document.getElementById("receipt-modal");
+        const closeReceipt = document.getElementById("close-receipt");
+        const receiptContent = document.getElementById("receipt-content");
+
+        // Form elements
+        const vehicleSelect = document.getElementById("vehicle-select");
+        const bookingDate = document.getElementById("booking-date");
+        const bookingTime = document.getElementById("booking-time");
+        const durationHours = document.getElementById("duration-hours");
+        const durationMinutes = document.getElementById("duration-minutes");
+        const fullDayCheckbox = document.getElementById("full-day-checkbox");
+        const priceDisplay = document.getElementById("price-display");
+        const paymentSelect = document.getElementById("payment-select");
+
+        // Adjust the SVG overlay size to match the image size
+        image.addEventListener("load", () => {
+            svgOverlay.setAttribute("width", image.clientWidth);
+            svgOverlay.setAttribute("height", image.clientHeight);
+        });
+
+        // Specify lots with no parking available
+        const unavailableLots = ["Gzowski Way-2", "Mackenzie House", "Student Centre", "Otonabee College"];
+
+        // Generate random spaces available for each lot
+        const lotSpaces = {};
+        areas.forEach((area) => {
+            if (!unavailableLots.includes(area.alt)) {
+                lotSpaces[area.alt] = Math.floor(Math.random() * (21 - 5 + 1)) + 5;
+            }
+        });
+
+        let selectedLot = ""; // To store the currently selected lot
+
+        // Function to update the tooltip and SVG overlay based on lot availability
+        function updateLotDisplay(area) {
+            const coords = area.coords.split(",").map(Number);
+
+            // Create an SVG path for the polygon
+            let pathData = "M ";
+            for (let i = 0; i < coords.length; i += 2) {
+                pathData += `${coords[i]},${coords[i + 1]} `;
+            }
+            pathData += "Z"; // Close the path
+
+            // Remove any existing path
+            svgOverlay.innerHTML = "";
+
+            // Add the new path to the SVG
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", pathData);
+
+            // Check if the lot is unavailable
+            if (unavailableLots.includes(area.alt) || lotSpaces[area.alt] <= 0) {
+                path.setAttribute("class", "highlight-path-unavailable");
+                tooltip.innerHTML = `<strong>${area.alt}</strong><br>No parking available`;
+            } else {
+                path.setAttribute("class", "highlight-path");
+                tooltip.innerHTML = `<strong>${area.alt}</strong><br>Spaces available: ${lotSpaces[area.alt]}`;
+            }
+            svgOverlay.appendChild(path);
+
+            // Show tooltip
+            tooltip.style.visibility = "visible";
+            tooltip.style.opacity = "1";
+        }
 
         areas.forEach((area) => {
-            area.addEventListener("mouseover", (e) => {
-                const coords = area.coords.split(",").map(Number);
-                const shape = area.shape;
+            area.addEventListener("mouseover", () => {
+                updateLotDisplay(area);
+            });
 
-                if (shape === "poly") {
-                    const xMin = Math.min(...coords.filter((_, i) => i % 2 === 0));
-                    const xMax = Math.max(...coords.filter((_, i) => i % 2 === 0));
-                    const yMin = Math.min(...coords.filter((_, i) => i % 2 !== 0));
-                    const yMax = Math.max(...coords.filter((_, i) => i % 2 !== 0));
-
-                    // Position the highlight box
-                    highlight.style.left = `${xMin}px`;
-                    highlight.style.top = `${yMin}px`;
-                    highlight.style.width = `${xMax - xMin}px`;
-                    highlight.style.height = `${yMax - yMin}px`;
-                    highlight.style.display = "block";
-                }
+            area.addEventListener("mousemove", (e) => {
+                // Update tooltip position to follow the cursor
+                tooltip.style.left = `${e.clientX + 10}px`;
+                tooltip.style.top = `${e.clientY + 10}px`;
             });
 
             area.addEventListener("mouseout", () => {
-                highlight.style.display = "none";
+                // Remove the highlight path
+                svgOverlay.innerHTML = "";
+
+                // Hide tooltip
+                tooltip.style.visibility = "hidden";
+                tooltip.style.opacity = "0";
+            });
+
+            area.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                selectedLot = area.alt;
+
+                if (unavailableLots.includes(area.alt) || lotSpaces[area.alt] <= 0) {
+                    alert("Sorry! No available spaces remaining in this lot!");
+                } else {
+                    // Show the form modal
+                    formModal.classList.add("show");
+                    overlay.classList.add("show");
+                    resetForm();
+                }
             });
         });
+
+        closeForm.addEventListener("click", () => {
+            formModal.classList.remove("show");
+            overlay.classList.remove("show");
+        });
+
+        overlay.addEventListener("click", () => {
+            formModal.classList.remove("show");
+            overlay.classList.remove("show");
+        });
+
+        // Function to reset form fields
+        function resetForm() {
+            vehicleSelect.selectedIndex = 0;
+            bookingDate.value = "";
+            bookingTime.value = "";
+            durationHours.selectedIndex = 0;
+            durationMinutes.selectedIndex = 0;
+            fullDayCheckbox.checked = false;
+            durationHours.disabled = false;
+            durationMinutes.disabled = false;
+            updatePrice();
+        }
+
+        // Event listeners for form inputs to update price dynamically
+        durationHours.addEventListener("change", updatePrice);
+        durationMinutes.addEventListener("change", updatePrice);
+        fullDayCheckbox.addEventListener("change", () => {
+            if (fullDayCheckbox.checked) {
+                durationHours.disabled = true;
+                durationMinutes.disabled = true;
+            } else {
+                durationHours.disabled = false;
+                durationMinutes.disabled = false;
+            }
+            updatePrice();
+        });
+
+        function updatePrice() {
+            let price = 0;
+            if (fullDayCheckbox.checked) {
+                price = 10.00;
+            } else {
+                const hours = parseInt(durationHours.value);
+                const minutes = parseInt(durationMinutes.value);
+                const totalHours = hours + minutes / 60;
+                price = totalHours * 0.70; // Updated rate to $0.70 per hour
+            }
+            priceDisplay.textContent = `Price: $${price.toFixed(2)}`;
+        }
+
+        submitButton.addEventListener("click", () => {
+            // Validate form inputs
+            if (!bookingDate.value || !bookingTime.value) {
+                alert("Please select both date and time for your booking.");
+                return;
+            }
+
+            // Calculate booking date
+            const selectedDate = new Date(bookingDate.value);
+            const today = new Date();
+            today.setHours(0,0,0,0); // Normalize to midnight for comparison
+
+            // Prepare booking details
+            const vehicle = vehicleSelect.value;
+            const date = bookingDate.value;
+            const time = bookingTime.value;
+            const fullDay = fullDayCheckbox.checked ? "Yes" : "No";
+            let duration = "Full Day";
+            if (!fullDay) {
+                duration = `${durationHours.value} hour(s) and ${durationMinutes.value} minute(s)`;
+            }
+            const payment = paymentSelect.value;
+            const priceText = priceDisplay.textContent;
+
+            // Check if booking is for today
+            const isToday = selectedDate.toDateString() === today.toDateString();
+
+            // Prevent booking if no spaces are available
+            if (isToday && lotSpaces[selectedLot] <= 0) {
+                alert("Sorry! No available spaces remaining in this lot for today.");
+                formModal.classList.remove("show");
+                overlay.classList.remove("show");
+                return;
+            }
+
+            // Update lot spaces if booking is today
+            if (isToday) {
+                lotSpaces[selectedLot] -= 1;
+                // Ensure lotSpaces doesn't go negative
+                if (lotSpaces[selectedLot] < 0) {
+                    lotSpaces[selectedLot] = 0;
+                }
+            }
+
+            // Update tooltip immediately if booking was for today
+            if (isToday) {
+                // No need to do anything if the lot is already unavailable
+                updateLotDisplayForArea(selectedLot);
+            }
+
+            // Prepare receipt content
+            let receipt = `
+                <strong>Vehicle:</strong> ${vehicle}<br>
+                <strong>Lot:</strong> ${selectedLot}<br>
+                <strong>Date:</strong> ${date}<br>
+                <strong>Time:</strong> ${time}<br>
+                <strong>Full Day Parking:</strong> ${fullDay}<br>
+                <strong>Duration:</strong> ${duration}<br>
+                <strong>Payment:</strong> ${payment}<br>
+                <strong>${priceText}</strong>
+            `;
+
+            // Show receipt modal
+            receiptContent.innerHTML = receipt;
+            receiptModal.classList.add("show");
+            overlay.classList.add("show");
+
+            // Hide form modal
+            formModal.classList.remove("show");
+        });
+
+        closeReceipt.addEventListener("click", () => {
+            receiptModal.classList.remove("show");
+            overlay.classList.remove("show");
+        });
+
+        // Function to update lot display after booking
+        function updateLotDisplayForArea(lotAlt) {
+            const area = Array.from(areas).find(a => a.alt === lotAlt);
+            if (area) {
+                // If lot becomes unavailable after booking, add to unavailableLots
+                if (lotSpaces[lotAlt] <= 0 && !unavailableLots.includes(lotAlt)) {
+                    unavailableLots.push(lotAlt);
+                }
+                updateLotDisplay(area);
+            }
+        }
     </script>
 </body>
 </html>
